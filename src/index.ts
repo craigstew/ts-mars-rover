@@ -1,24 +1,16 @@
-import { parseInstruction } from "../src/input/parseInstruction";
-import { parseCompassDirection } from "../src/input/parseCompassDirection";
-import { parsePlateauSize } from "../src/input/parsePlateauSize";
-import { parsePosition } from "../src/input/parsePosition"
+import { Rover } from "../src/logic/rover"
 
-const setSize = parsePlateauSize("5 5");
+const rover = new Rover("Mars Rover", {x: 2, y: 3, facing: "N"})
 
-const setPos1 = parsePosition("1 2 N")
-const instruction_one = parseInstruction("LMLMLMLMM")
+rover.moveForward()
+rover.rotate("R")
+rover.moveForward()
+rover.moveForward()
+rover.rotate("L")
+rover.moveForward()
 
-const setPos2 = parsePosition("3 3 E")
-const instruction_two = parseInstruction("MMRMMRMRRM")
-
-console.log("Plateau size:", setSize);
-
-console.log("Rover 1 position:", setPos1);
-console.log("Rover 1 instructions:", instruction_one);
-
-console.log("Rover 2 position:", setPos2);
-console.log("Rover 2 instructions:", instruction_two);
-
+console.log("Mars Rover Should Now Be Located at:\nX: 4, Y: 5, Facing: N")
+console.log(rover.getPosition())
 
 
 
