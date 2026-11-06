@@ -7,7 +7,7 @@ function isInstruction(value: string): value is Instruction {
     return true
 }
 
-export function parseInstructions(rawInstructions: string): Instruction[] {
+export function parseInstruction(rawInstructions: string): Instruction[] {
     return rawInstructions
         .split("")
         .filter(isInstruction);
