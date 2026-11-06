@@ -1,5 +1,2 @@
-const INSTRUCTIONS = ["L", "R", "M"] as const;
-type Instruction = (typeof INSTRUCTIONS)[number];
+console.log("hello")
 
-const COMPASSDIRECTION = ["N", "E", "S", "W"] as const;
-type CompassDirection = (typeof COMPASSDIRECTION)[number];
