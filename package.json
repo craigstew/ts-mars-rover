@@ -1,0 +1,29 @@
+{
+  "name": "ts-mars-rover",
+  "version": "1.0.0",
+  "description": "Mars Rover - TypeScript Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craigstew/ts-mars-rover.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/craigstew/ts-mars-rover/issues"
+  },
+  "homepage": "https://github.com/craigstew/ts-mars-rover#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.0"
+  }
+}

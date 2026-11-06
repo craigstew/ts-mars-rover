@@ -1,1 +1,3 @@
-Mars Rover - TypeScript Project
+# Mars Rover
+
+A terminal app for moving Rovers around on the surface of Mars.
