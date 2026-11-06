@@ -1,7 +1,7 @@
 import { expect, test, describe } from "vitest";
 import { Rover } from "../rover";
 
-describe("rover", () => {
+describe("rover direction changes", () => {
   test("Turning right when facing north, results in facing east", () => {
     const rover = new Rover("Rover-1", {x: 1, y: 2, facing: "N"});
 
@@ -29,5 +29,36 @@ describe("rover", () => {
     rover.rotate("L");
 
     expect(rover.getPosition().facing).toBe("E")
+  });
+});
+
+describe("rover moving", () => {
+  test("Moving forward facing north", () => {
+    const rover = new Rover("Rover-1", {x: 1, y: 2, facing: "N"});
+
+    rover.moveForward();
+
+    expect(rover.getPosition()).toEqual({x: 1, y: 3, facing: "N"})
+  });
+  test("Moving forward facing east", () => {
+    const rover = new Rover("Rover-2", {x: 2, y: 4, facing: "E"});
+
+    rover.moveForward();
+
+    expect(rover.getPosition()).toEqual({x: 3, y: 4, facing: "E"})
+  });
+  test("Moving forward facing south", () => {
+    const rover = new Rover("Rover-3", {x: 2, y: 4, facing: "S"});
+
+    rover.moveForward();
+
+    expect(rover.getPosition()).toEqual({x: 2, y: 3, facing: "S"})
+  });
+  test("Moving forward facing west", () => {
+    const rover = new Rover("Rover-4", {x: 2, y: 4, facing: "W"});
+
+    rover.moveForward();
+
+    expect(rover.getPosition()).toEqual({x: 1, y: 4, facing: "W"})
   });
 });
