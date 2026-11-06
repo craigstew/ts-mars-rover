@@ -1,6 +1,7 @@
 import { Position } from "../types/position";
 import { Rotation } from "../types/rotation";
 import { CompassDirection } from "../types/compassDirection";
+import { Plateau } from "./plateau";
 
 const rightTurn: Record <CompassDirection, CompassDirection> ={
     N: "E", E: "S", S: "W", W: "N"
@@ -11,13 +12,17 @@ const leftTurn: Record <CompassDirection, CompassDirection> ={
 }
 
 export class Rover {
-  readonly name: string;
-  private position: Position;
+    readonly name: string;
+    private position: Position;
 
-  constructor(name: string, startingPosition: Position) {
-    this.name = name;
-    this.position = startingPosition;
-  }
+    constructor(name: string, startingPosition: Position, private plateau: Plateau) {
+        this.name = name;
+        this.position = startingPosition;
+
+        if (!this.plateau.isWithinBounds(startingPosition)) {
+            throw new Error("Rover starting position is outside the plateau!");
+        }
+    }
 
   getPosition(): Position {
     return this.position;
@@ -32,19 +37,27 @@ export class Rover {
   }
 
   moveForward(): void {
+    let newPosition: Position;
+
     switch(this.position.facing) {
         case "N":
-            this.position = {...this.position, y: this.position.y + 1}
+            newPosition = {...this.position, y: this.position.y + 1}
             break;
         case "E":
-            this.position = {...this.position, x: this.position.x + 1}
+            newPosition = {...this.position, x: this.position.x + 1}
             break;
         case "S":
-            this.position = {...this.position, y: this.position.y - 1}
+            newPosition = {...this.position, y: this.position.y - 1}
             break;
         case "W":
-            this.position = {...this.position, x: this.position.x - 1}
+            newPosition = {...this.position, x: this.position.x - 1}
             break;
+    }
+    if (this.plateau.isWithinBounds(newPosition)) {
+        this.position = newPosition;
+    }
+    else {
+        throw new Error("Rover has left the restricted plateau zone!")
     }
   }
 }

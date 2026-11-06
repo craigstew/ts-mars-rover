@@ -1,6 +1,8 @@
 import { Rover } from "../src/logic/rover"
+import { Plateau } from "../src/logic/plateau"
 
-const rover = new Rover("Mars Rover", {x: 2, y: 3, facing: "N"})
+const plateau = new Plateau({width: 4, height: 4})
+const rover = new Rover("Mars Rover", {x: 2, y: 3, facing: "N"}, plateau)
 
 rover.moveForward()
 rover.rotate("R")
