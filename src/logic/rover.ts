@@ -1,5 +1,14 @@
 import { Position } from "../types/position";
 import { Rotation } from "../types/rotation";
+import { CompassDirection } from "../types/compassDirection";
+
+const rightTurn: Record <CompassDirection, CompassDirection> ={
+    N: "E", E: "S", S: "W", W: "N"
+}
+
+const leftTurn: Record <CompassDirection, CompassDirection> ={
+    N: "W", W: "S", S: "E", E: "N"
+}
 
 export class Rover {
   readonly name: string;
@@ -15,6 +24,10 @@ export class Rover {
   }
 
   rotate(rotation: Rotation): void {
-    // work out the new direction, then update this.position
+    if(rotation === "R") {
+        this.position = {...this.position, facing: rightTurn[this.position.facing]}
+    } else {
+        this.position = {...this.position, facing: leftTurn[this.position.facing]}
+    }
   }
 }
